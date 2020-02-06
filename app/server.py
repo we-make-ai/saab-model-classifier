@@ -23,8 +23,8 @@ path = Path(__file__).parent
 
 app = Starlette(debug=True)
 app.add_middleware(CORSMiddleware, allow_origins=['*'], allow_headers=['X-Requested-With', 'Content-Type'])
-#app.mount('/static', StaticFiles(directory='app/static'))
-app.mount('/static', StaticFiles(directory='static'))
+app.mount('/static', StaticFiles(directory='app/static'))
+#app.mount('/static', StaticFiles(directory='static'))
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
