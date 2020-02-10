@@ -69,13 +69,14 @@ async def setup_learner():
 
 #pickle_data = CustomUnpickler(open('file_path.pkl', 'rb')).load()
 
-#loop = asyncio.get_event_loop()
-#tasks = [asyncio.ensure_future(setup_learner())]
-#learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
-#loop.close()
-#path = Path('./')
-#learner = load_learner(Path('saab-model-classifier.pkl'))
+loop = asyncio.get_event_loop()
+tasks = [asyncio.ensure_future(setup_learner())]
+learn = loop.run_until_complete(asyncio.gather(*tasks))[0]
+loop.close()
+path = Path('./')
+#learn = load_learner(Path('saab-model-classifier.pkl'))
 #learner = CustomUnpickler(open('saab-model-classifier.pkl'))
+lern = setup_learner()
 
 @app.route('/')
 async def homepage(request):
@@ -95,6 +96,7 @@ async def analyze(request):
 
 if __name__ == '__main__':
     if 'serve' in sys.argv:
-        print(__main__)
+        #print(__main__)
+        logger.debug("starting...")
         logger.info("starting uvicorn server at port 5000")
         uvicorn.run(app=app, host='0.0.0.0', port=5000, log_level="info")
