@@ -1,0 +1,123 @@
+{% extends "template.html" %}
+{% block content %}
+
+  
+    <h1>Detect Retina Diseases with Deep Learning</h1>
+    <p class="text-justify">
+      Worldwide there are about 1 billion people affected by some kind of vision impairment. Many suffer from eye diseases like 
+      cataract, glaucoma or retina diseases.<br/><br/>
+      We have trained a deep learning model to detect these three different eye diseases with a very small dataset of about 300 
+      image files. The data comes from a kaggle competition and can be downloaded <a href="https://www.kaggle.com/jr2ngb/cataractdataset/version/2">here</a>.
+      This is a very small dataset for training a deep neural net. Therefore we have used a technology called <em>transfer learning</em> to 
+      improve training time and accuracy for small training datasets.
+
+    </p>
+    <h2>Use of Transfer Learning</h2>
+    <p class="text-justify">
+      Though we have very less training examples to train a deep neurol net, we have achieved good results by use of a technique called 
+      <span class="mark">Transfer Learning</span>. This means, we use a pretrained model like <i>ResNet34</i>, cut the last layer, add a new dense layer
+       with 4 output nodes and only train the last layer.<br/><br/>
+      With this process our model can profit from the pretrained basic layers and we can achieve better results in a shorter periode of time.
+    </p>
+    <p class="text-center small"><i>
+      Please be aware of the fact, that this model is used for demonstrations only. It's not meant for real diagnosis of eye diseases. 
+      If you think you suffer from any vision impairment, consult your ophthalmologist!</i>
+    </p>
+    <p class="text-justify">
+      If you are more interested in how we implemented the deep learning model have a look at the <a href="https://github.com/we-make-ai/detect-eye-diseases/blob/master/detect_eye_diseases.ipynb">
+        jupyter notebook</a> in the repository.<br/>
+      If you are curious on how to host a deep learning model see our blog post on medium: <a href="https://medium.com/analytics-vidhya/put-deep-learning-image-classifier-in-action-a956c4a9bc58">put-deep-learning-image-classifier-in-action</a>
+    </p>
+    <h2>Try to analyze an Image of the Retina</h2>
+    <small>Just click on select and select an image of the retina. Click on Analyze.</small>
+    <p>If you need some example images of eye diseases to test our mordel, search for terms like "image retina disease": <a href="https://duckduckgo.com/?q=retina+disease+image&atb=v200-1&iax=images&ia=images&iai=http%3A%2F%2Fwebvision.med.utah.edu%2Fimageswv%2Farmdretina.jpeg">duckduckgo.com</a></p>
+
+      <div class='no-display'>
+        <input id='file-input'
+               class='no-display'
+               type='file'
+               name='file'
+               accept='image/*'
+               onchange='showPicked(this)'>
+      </div>
+      
+      <div class='upload-label'>
+        <label id='upload-label' class="label label-primary">No file chosen</label>
+      </div>
+      <div>
+        <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
+      </div>
+      <div class='analyze'>
+        <button id='analyze-button' class='btn btn-primary' type='button' onclick='analyze()'>Analyze</button>
+      </div>
+      
+      <div id="results" style="display: none;">
+        <div class="table-responsive">
+          <table class="table">
+            <colgroup>
+              <col span="1" style="width: 25%;">
+              <col span="1" style="width: 75%;">              
+            </colgroup>
+            <thead>
+              <tr>
+                <th><span class="text-center">Label</span></th>
+                <th><span class="text-center">Prediction</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span id="label_1" class="label label-primary">test</span>
+                </td>
+                <td>
+                  <div class="progress">                  
+                    <div id="progressbar_1" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="70"
+                    aria-valuemin="0" aria-valuemax="100" style="width:70%">            
+                    </div>
+                  </div>
+                </td> 
+              </tr>
+              <tr>
+                <td>
+                  <span id="label_2" class="label label-primary">test</span>
+                </td>
+                <td>
+                  <div class="progress">
+                    <div id="progressbar_2" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="70"
+                    aria-valuemin="0" aria-valuemax="100" style="width:70%">            
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span id="label_3" class="label label-primary">test</span>
+                </td>
+                <td>              
+                  <div class="progress">
+                    <div id="progressbar_3" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="70"
+                    aria-valuemin="0" aria-valuemax="100" style="width:70%">            
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span id="label_4" class="label label-primary">test</span>
+                </td>
+                <td>
+                  <div class="progress">
+                    <div id="progressbar_4" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="70"
+                    aria-valuemin="0" aria-valuemax="100" style="width:70%">            
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+   
+    
+  
+{% endblock %}

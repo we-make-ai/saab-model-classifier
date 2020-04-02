@@ -6,7 +6,7 @@ from fastai2.vision.all import *
 
 import logging
 
-export_file_url = 'https://drive.google.com/file/d/1yK9znhiZ4fEUQRLrUpnI_rHfq2DQ-07Q/view?usp=sharing'
+export_file_url = 'https://drive.google.com/open?id=1yK9znhiZ4fEUQRLrUpnI_rHfq2DQ-07Q'
 export_file_name = 'saab-classifier.pkl'
 
 classes = ['Saab_9000', 'Saab_900', 'Saab_9-3', 'Saab_9-5']
@@ -14,21 +14,22 @@ path = Path(__file__).parent
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+logger.info(str(path))
 
-async def download_file(url, dest):
+def download_file(url, dest):
     logger.debug('downloading_file')
     if dest.exists(): 
         logger.debug('ML Model exists, skipping download')
         return
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            data = await response.read()
+    with aiohttp.ClientSession() as session:
+        with session.get(url) as response:
+            data = response.read()
             with open(dest, 'wb') as f:
                 f.write(data)
 
 
-async def setup_learner():
-    await download_file(export_file_url, path / export_file_name)
+def setup_learner():
+    download_file(export_file_url, path / export_file_name)
     try:
         learn = torch.load(path/export_file_name)
         defaults.device = torch.device('cpu')

@@ -1,0 +1,19 @@
+{% extends "template.html" %}
+{% block content %}
+    {% for pred in preds.predictions %}
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+                <div class="label">{% pred[0] %}</div>
+        </div>
+        <div class="col-md-6">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: {pred[1]*100}"  aria-valuenow="{pred[1]*100}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
