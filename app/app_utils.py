@@ -7,10 +7,12 @@ from fastai2.vision.all import *
 import logging
 
 export_file_url = 'https://drive.google.com/open?id=1yK9znhiZ4fEUQRLrUpnI_rHfq2DQ-07Q'
+
 export_file_name = 'saab-classifier.pkl'
 
 classes = ['Saab_9000', 'Saab_900', 'Saab_9-3', 'Saab_9-5']
 path = Path(__file__).parent
+path = Path('./')
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -32,7 +34,7 @@ async def setup_learner():
     await download_file(export_file_url, path / export_file_name)
     try:
         #learn = torch.load(path/export_file_name)
-        #defaults.device = torch.device('cpu')
+        defaults.device = torch.device('cpu')
         learn = load_learner(path/export_file_name)
         return learn
     except RuntimeError as e:

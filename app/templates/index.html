@@ -2,36 +2,34 @@
 {% block content %}
 
   
-    <h1>Detect Retina Diseases with Deep Learning</h1>
+    <h1>Classic Saab Cars Classifier</h1>
     <p class="text-justify">
-      Worldwide there are about 1 billion people affected by some kind of vision impairment. Many suffer from eye diseases like 
-      cataract, glaucoma or retina diseases.<br/><br/>
-      We have trained a deep learning model to detect these three different eye diseases with a very small dataset of about 300 
-      image files. The data comes from a kaggle competition and can be downloaded <a href="https://www.kaggle.com/jr2ngb/cataractdataset/version/2">here</a>.
-      This is a very small dataset for training a deep neural net. Therefore we have used a technology called <em>transfer learning</em> to 
-      improve training time and accuracy for small training datasets.
-
+      Do you know the former Swedish car manufacturer <a href="https://de.wikipedia.org/wiki/Saab">Saab</a>?
     </p>
-    <h2>Use of Transfer Learning</h2>
+    <p>
+      <strong>This classifier is able to detect one of these models:</strong>
+      <ul>
+        <li>Saab 900</li>
+        <li>Saab 9000</li>
+        <li>Saab 9-3</li>
+        <li>Saab 9-5</li>
+      </ul>
+    </p>
+    <h2>A short Note on Transfer Learning</h2>
     <p class="text-justify">
       Though we have very less training examples to train a deep neurol net, we have achieved good results by use of a technique called 
-      <span class="mark">Transfer Learning</span>. This means, we use a pretrained model like <i>ResNet34</i>, cut the last layer, add a new dense layer
+      <span class="mark">Transfer Learning</span>. This means, we use a pretrained model like <i>ResNet34</i> or <i>ResNet50</i>, cut the last layer, add a new dense layer
        with 4 output nodes and only train the last layer.<br/><br/>
       With this process our model can profit from the pretrained basic layers and we can achieve better results in a shorter periode of time.
-    </p>
-    <p class="text-center small"><i>
-      Please be aware of the fact, that this model is used for demonstrations only. It's not meant for real diagnosis of eye diseases. 
-      If you think you suffer from any vision impairment, consult your ophthalmologist!</i>
-    </p>
+    </p>    
     <p class="text-justify">
-      If you are more interested in how we implemented the deep learning model have a look at the <a href="https://github.com/we-make-ai/detect-eye-diseases/blob/master/detect_eye_diseases.ipynb">
+      If you are more interested in how we implemented the deep learning model have a look at the <a href="https://github.com/we-make-ai/saab-model-classifier">
         jupyter notebook</a> in the repository.<br/>
       If you are curious on how to host a deep learning model see our blog post on medium: <a href="https://medium.com/analytics-vidhya/put-deep-learning-image-classifier-in-action-a956c4a9bc58">put-deep-learning-image-classifier-in-action</a>
     </p>
-    <h2>Try to analyze an Image of the Retina</h2>
-    <small>Just click on select and select an image of the retina. Click on Analyze.</small>
-    <p>If you need some example images of eye diseases to test our mordel, search for terms like "image retina disease": <a href="https://duckduckgo.com/?q=retina+disease+image&atb=v200-1&iax=images&ia=images&iai=http%3A%2F%2Fwebvision.med.utah.edu%2Fimageswv%2Farmdretina.jpeg">duckduckgo.com</a></p>
-
+    <h2>Try to analyze an Image of your favourite Saab model!</h2>
+    <small>Just click on select and choose an image of the car. Click on Analyze.</small>
+    
       <div class='no-display'>
         <input id='file-input'
                class='no-display'
