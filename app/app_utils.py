@@ -6,7 +6,7 @@ from fastai2.vision.all import *
 
 import logging
 
-export_file_url = 'https://drive.google.com/open?id=1yK9znhiZ4fEUQRLrUpnI_rHfq2DQ-07Q'
+export_file_url = 'https://drive.google.com/file/d/1nSVopcfgnBg-pdzYWuByxstLFA-QV4tP/view?usp=sharing'
 
 export_file_name = 'saab-classifier.pkl'
 

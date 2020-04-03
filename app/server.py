@@ -18,7 +18,7 @@ import logging
 from app_utils import *
 
 classes = ['Saab_9000', 'Saab_900', 'Saab_9-3', 'Saab_9-5']
-path = Path(__file__).parent
+
 
 templates = Jinja2Templates(directory=str('app/templates'))
 
