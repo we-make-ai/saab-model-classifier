@@ -1,0 +1,6 @@
+.gitignore
+data
+models
+*.ipynb
+Dockerfile
+README.md
